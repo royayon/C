@@ -1,0 +1,7 @@
+#include<stdio.h>
+#define pf printf
+#define sf scanf
+int main()
+{
+
+}

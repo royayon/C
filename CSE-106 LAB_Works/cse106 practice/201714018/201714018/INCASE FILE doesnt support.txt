@@ -1,0 +1,158 @@
+// 1.Write a C program to capitalize first character of each word in a string.
+#include<stdio.h>
+#include<ctype.h>
+
+int main()
+{
+	int i;
+	char str[1000];
+	puts("Input==>");
+	gets(str);
+	
+	for(i=0;str[i]!='\0';i++)
+	{
+		if(i==0)						//for first char
+			str[i]=toupper(str[i]);					//toupper function used <ctype.h>
+		else 
+			str[i]=tolower(str[i]);					//tolower function is used
+			
+		if(isspace(str[i])!=0)						//isspace function for space finding <ctype.h>
+			{
+				str[i+1]=toupper(str[i+1]);
+				i++;
+			}						
+	}
+	puts("Output==>");
+	puts(str);
+}
+
+
+//  2.Write a C program to check if two Strings are anagram or not.
+#include<stdio.h>
+#include<string.h>
+
+void bubbleSort(char str[], int len);
+
+
+int main()
+{
+	char str[1000],str1[1000];
+	puts("Firts Word==>");
+	gets(str);
+	puts("Second Word==>");
+	gets(str1);
+	
+	int len=strlen(str);
+	int len1=strlen(str1);
+	
+	bubbleSort(str,len);
+	bubbleSort(str1,len1);
+	
+	if(strcmp(str,str1)==0)
+		printf("\nAnagram");
+	else
+		printf("\nNot anagram");
+	
+}
+
+void bubbleSort(char str[], int len)
+{
+	//Bubble Sort
+    for (int i = 0; i < len-1; i++)
+    {
+         for (int j = 0; j < len-i-1; j++)
+         {
+            if (str[j] > str[j+1])
+            {
+                char temp;
+                temp=str[j];
+                str[j]=str[j+1];
+                str[j+1]=temp;
+            }
+
+         }
+    }
+}
+
+
+
+// 3.Write a C program to find the matrix multiplication of two 3x3 matrix.
+#include<stdio.h>
+
+int main()
+{
+	int mat1[3][3];
+	int mat2[3][3];
+	int mat3[3][3];
+	int i,j;
+	
+	//matrix inputs
+	printf("Input First Matrix==>\n");
+	for(i=0;i<=2;i++)
+	{
+		for(j=0;j<=2;j++)
+			scanf("%d",&mat1[i][j]);
+	}
+	printf("Input Second Matrix==>\n");
+	for(i=0;i<=2;i++)
+	{
+		for(j=0;j<=2;j++)
+			scanf("%d",&mat2[i][j]);
+	}
+	
+	
+	//multiplication process
+	for(i=0;i<=2;i++)
+	{
+		for(j=0;j<=2;j++)
+		{
+			mat3[i][j]=((mat1[i][0] * mat2[0][j]) + (mat1[i][1] * mat2[1][j]) + (mat1[i][2] * mat2[2][j])); 
+		}
+	}
+	
+	//output Matrix
+	printf("\nOutput Matrix==>\n");
+	for(i=0;i<=2;i++)
+	{
+		for(j=0;j<=2;j++)
+			printf("%d ",mat3[i][j]);
+		printf("\n");
+	}
+
+}
+
+
+
+// 4.Write a C program to find the transpose of a 3x3 matrix (rows will become columns, columns will become rows).
+#include<stdio.h>
+
+int main()
+{
+	int mat1[3][3];
+	int mat2[3][3];
+	int i,j;
+	
+	//matrix input
+	printf("Input A Matrix==>\n");
+	for(i=0;i<=2;i++)
+	{
+		for(j=0;j<=2;j++)
+			scanf("%d",&mat1[i][j]);
+	}
+	
+	//transpose
+	for(i=0;i<=2;i++)
+	{
+		for(j=0;j<=2;j++)
+			mat2[i][j]=mat1[j][i];
+	}
+	
+	//output Matrix
+	printf("\nOutput Matrix==>\n");
+	for(i=0;i<=2;i++)
+	{
+		for(j=0;j<=2;j++)
+			printf("%d ",mat2[i][j]);
+		printf("\n");
+	}
+}
